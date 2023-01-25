@@ -80,7 +80,22 @@ public class TeamService {
         return false;
     }
 
-    public void removeMember(int memberId){
+    public void removeMember(int memberId) throws TeamException {
+        int i = 0;
+        for (;i<total;i++){
+            if(team[i].getMemberId()==memberId) {
+                team[i].setStatus(Status.FREE);
+                break;
+            }
+        }
 
+        if (i==total){
+            throw new TeamException("找不到指定memberId的员工，删除失败");
+        }
+
+        for (int j=i+1;j<total;j++){
+            team[j-1] = team[j];
+        }
+        team[--total]=null;
     }
 }
