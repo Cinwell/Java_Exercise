@@ -5,4 +5,5 @@ package com.cinwell.domain;
  * @Date 2023 01 15 17 12
  **/
 public interface Equipment {
+    String getDescription();
 }
